@@ -22,12 +22,12 @@
 
 | Role | Name | Enrollment No. | GitHub Username |
 |------|------|----------------|-----------------|
-| Group Lead | | | |
-| Member 2 | | | |
-| Member 3 | | | |
-| Member 4 | | | |
+| Group Lead | Aditya Kumar | 2501010613 | deathseeker3717 |
+| Member 2 | Shaurya Sharma | 2501010421 | acroz-bit |
+| Member 3 | Aryan Goyal | 2501010092 | aaryaangoyal |
+| Member 4 | Harshvardhan Dhankhar | 2501010562 | harshvardhan0809 |
 
-**Team No.:** ____ · **Section:** ____ · **Repository URL:** ____
+**Team No.:** T0136 · **Section:** B · **Repository URL:** https://github.com/deathseeker3717/CampusPulse_DE_2026.git
 
 ---
 

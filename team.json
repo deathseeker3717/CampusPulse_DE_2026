@@ -1,0 +1,11 @@
+{
+  "team_number": "T0136",
+  "group_lead": { "name": "Aditya Kumar", "enrollment_no": "2501010613", "github": "deathseeker3717" },
+  "members": [
+    { "name": "Shaurya Sharma", "enrollment_no": "2501010421", "github": "acroz-bit" },
+    { "name": "Aryan Goyal", "enrollment_no": "2501010092", "github": "aaryaangoyal" },
+    { "name": "Harshvardhan Dhankhar", "enrollment_no": "2501010562", "github": "harshvardhan0809" }
+  ],
+  "postgres_version": "18.6",
+  "laptop_used_for_benchmarks": "Apple Macbook Pro M4 16GB RAM"
+}
