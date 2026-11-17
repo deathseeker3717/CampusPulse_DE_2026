@@ -217,7 +217,10 @@ CREATE TABLE applications (
 
     CONSTRAINT fk_applications_member
         FOREIGN KEY (member_id)
-        REFERENCES members(member_id)
+        REFERENCES members(member_id),
+
+    CONSTRAINT applications_job_member_unique
+        UNIQUE (job_id, member_id)
 );
 
 -- 12. Profile Views

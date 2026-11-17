@@ -134,6 +134,8 @@ The composite primary key is `(job_id, skill_id)`.
 | status | TEXT | NOT NULL, CHECK | Application status |
 | status_updated_at | TIMESTAMPTZ | NOT NULL | Last status update time |
 
+A UNIQUE constraint on `(job_id, member_id)` ensures that a member can apply to a particular job only once.
+
 ### 2.12 profile_views
 
 | Column | Data Type | Constraints | Description |
