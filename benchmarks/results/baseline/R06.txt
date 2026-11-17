@@ -1,0 +1,57 @@
+=== R06 run 1 ===
+Sort  (cost=597.04..597.05 rows=5 width=67) (actual time=4.854..4.855 rows=42.00 loops=1)
+  Sort Key: j.posted_at DESC
+  Sort Method: quicksort  Memory: 28kB
+  Buffers: shared hit=115 read=236
+  ->  Nested Loop  (cost=0.28..596.98 rows=5 width=67) (actual time=3.914..4.835 rows=42.00 loops=1)
+        Buffers: shared hit=112 read=236
+        ->  Seq Scan on jobs j  (cost=0.00..559.50 rows=5 width=52) (actual time=3.905..4.068 rows=42.00 loops=1)
+              Filter: ((title ~~* '%data analyst%'::text) AND (posted_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (status = 'OPEN'::text) AND ((city_id = 1) OR (workplace_type = 'REMOTE'::text)))
+              Rows Removed by Filter: 14958
+              Buffers: shared read=222
+        ->  Index Scan using companies_pkey on companies c  (cost=0.28..7.49 rows=1 width=23) (actual time=0.018..0.018 rows=1.00 loops=42)
+              Index Cond: (company_id = j.company_id)
+              Index Searches: 42
+              Buffers: shared hit=112 read=14
+Planning:
+  Buffers: shared hit=245 read=4
+Planning Time: 0.754 ms
+Execution Time: 4.893 ms
+=== R06 run 2 ===
+Sort  (cost=597.04..597.05 rows=5 width=67) (actual time=3.224..3.225 rows=42.00 loops=1)
+  Sort Key: j.posted_at DESC
+  Sort Method: quicksort  Memory: 28kB
+  Buffers: shared hit=351
+  ->  Nested Loop  (cost=0.28..596.98 rows=5 width=67) (actual time=3.000..3.209 rows=42.00 loops=1)
+        Buffers: shared hit=348
+        ->  Seq Scan on jobs j  (cost=0.00..559.50 rows=5 width=52) (actual time=2.989..3.163 rows=42.00 loops=1)
+              Filter: ((title ~~* '%data analyst%'::text) AND (posted_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (status = 'OPEN'::text) AND ((city_id = 1) OR (workplace_type = 'REMOTE'::text)))
+              Rows Removed by Filter: 14958
+              Buffers: shared hit=222
+        ->  Index Scan using companies_pkey on companies c  (cost=0.28..7.49 rows=1 width=23) (actual time=0.001..0.001 rows=1.00 loops=42)
+              Index Cond: (company_id = j.company_id)
+              Index Searches: 42
+              Buffers: shared hit=126
+Planning:
+  Buffers: shared hit=249
+Planning Time: 0.296 ms
+Execution Time: 3.257 ms
+=== R06 run 3 ===
+Sort  (cost=597.04..597.05 rows=5 width=67) (actual time=3.036..3.037 rows=42.00 loops=1)
+  Sort Key: j.posted_at DESC
+  Sort Method: quicksort  Memory: 28kB
+  Buffers: shared hit=351
+  ->  Nested Loop  (cost=0.28..596.98 rows=5 width=67) (actual time=2.827..3.021 rows=42.00 loops=1)
+        Buffers: shared hit=348
+        ->  Seq Scan on jobs j  (cost=0.00..559.50 rows=5 width=52) (actual time=2.824..2.986 rows=42.00 loops=1)
+              Filter: ((title ~~* '%data analyst%'::text) AND (posted_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (status = 'OPEN'::text) AND ((city_id = 1) OR (workplace_type = 'REMOTE'::text)))
+              Rows Removed by Filter: 14958
+              Buffers: shared hit=222
+        ->  Index Scan using companies_pkey on companies c  (cost=0.28..7.49 rows=1 width=23) (actual time=0.001..0.001 rows=1.00 loops=42)
+              Index Cond: (company_id = j.company_id)
+              Index Searches: 42
+              Buffers: shared hit=126
+Planning:
+  Buffers: shared hit=249
+Planning Time: 0.304 ms
+Execution Time: 3.066 ms
