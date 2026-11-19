@@ -1,0 +1,110 @@
+=== R25 run 1 ===
+Limit  (cost=9467.20..9467.45 rows=100 width=16) (actual time=23.968..23.974 rows=100.00 loops=1)
+  Buffers: shared hit=1204
+  ->  Sort  (cost=9467.20..9550.49 rows=33313 width=16) (actual time=23.968..23.970 rows=100.00 loops=1)
+        Sort Key: ((t.start_date - t.prev_end)) DESC, t.member_id
+        Sort Method: top-N heapsort  Memory: 28kB
+        Buffers: shared hit=1204
+        ->  Subquery Scan on t  (cost=0.36..8194.00 rows=33313 width=16) (actual time=0.021..23.635 rows=6606.00 loops=1)
+              Filter: ((t.start_date - t.prev_end) > 182)
+              Rows Removed by Filter: 93334
+              Buffers: shared hit=1201
+              ->  WindowAgg  (cost=0.36..6611.62 rows=99940 width=12) (actual time=0.013..21.220 rows=99940.00 loops=1)
+                    Window: w1 AS (PARTITION BY positions.member_id ORDER BY positions.start_date)
+                    Storage: Memory  Maximum Storage: 17kB
+                    Buffers: shared hit=1201
+                    ->  Index Scan using idx_positions_member_start on positions  (cost=0.29..4862.67 rows=99940 width=12) (actual time=0.004..6.882 rows=99940.00 loops=1)
+                          Index Searches: 1
+                          Buffers: shared hit=1201
+Planning:
+  Buffers: shared hit=108
+Planning Time: 0.220 ms
+Execution Time: 24.007 ms
+=== R25 run 2 ===
+Limit  (cost=9467.20..9467.45 rows=100 width=16) (actual time=23.733..23.738 rows=100.00 loops=1)
+  Buffers: shared hit=1204
+  ->  Sort  (cost=9467.20..9550.49 rows=33313 width=16) (actual time=23.732..23.734 rows=100.00 loops=1)
+        Sort Key: ((t.start_date - t.prev_end)) DESC, t.member_id
+        Sort Method: top-N heapsort  Memory: 28kB
+        Buffers: shared hit=1204
+        ->  Subquery Scan on t  (cost=0.36..8194.00 rows=33313 width=16) (actual time=0.020..23.424 rows=6606.00 loops=1)
+              Filter: ((t.start_date - t.prev_end) > 182)
+              Rows Removed by Filter: 93334
+              Buffers: shared hit=1201
+              ->  WindowAgg  (cost=0.36..6611.62 rows=99940 width=12) (actual time=0.012..21.119 rows=99940.00 loops=1)
+                    Window: w1 AS (PARTITION BY positions.member_id ORDER BY positions.start_date)
+                    Storage: Memory  Maximum Storage: 17kB
+                    Buffers: shared hit=1201
+                    ->  Index Scan using idx_positions_member_start on positions  (cost=0.29..4862.67 rows=99940 width=12) (actual time=0.004..7.205 rows=99940.00 loops=1)
+                          Index Searches: 1
+                          Buffers: shared hit=1201
+Planning:
+  Buffers: shared hit=108
+Planning Time: 0.207 ms
+Execution Time: 23.770 ms
+=== R25 run 3 ===
+Limit  (cost=9467.20..9467.45 rows=100 width=16) (actual time=24.352..24.357 rows=100.00 loops=1)
+  Buffers: shared hit=1204
+  ->  Sort  (cost=9467.20..9550.49 rows=33313 width=16) (actual time=24.352..24.353 rows=100.00 loops=1)
+        Sort Key: ((t.start_date - t.prev_end)) DESC, t.member_id
+        Sort Method: top-N heapsort  Memory: 28kB
+        Buffers: shared hit=1204
+        ->  Subquery Scan on t  (cost=0.36..8194.00 rows=33313 width=16) (actual time=0.018..24.014 rows=6606.00 loops=1)
+              Filter: ((t.start_date - t.prev_end) > 182)
+              Rows Removed by Filter: 93334
+              Buffers: shared hit=1201
+              ->  WindowAgg  (cost=0.36..6611.62 rows=99940 width=12) (actual time=0.012..21.703 rows=99940.00 loops=1)
+                    Window: w1 AS (PARTITION BY positions.member_id ORDER BY positions.start_date)
+                    Storage: Memory  Maximum Storage: 17kB
+                    Buffers: shared hit=1201
+                    ->  Index Scan using idx_positions_member_start on positions  (cost=0.29..4862.67 rows=99940 width=12) (actual time=0.004..7.257 rows=99940.00 loops=1)
+                          Index Searches: 1
+                          Buffers: shared hit=1201
+Planning:
+  Buffers: shared hit=108
+Planning Time: 0.195 ms
+Execution Time: 24.388 ms
+=== R25 run 4 ===
+Limit  (cost=9467.20..9467.45 rows=100 width=16) (actual time=23.976..23.982 rows=100.00 loops=1)
+  Buffers: shared hit=1204
+  ->  Sort  (cost=9467.20..9550.49 rows=33313 width=16) (actual time=23.976..23.978 rows=100.00 loops=1)
+        Sort Key: ((t.start_date - t.prev_end)) DESC, t.member_id
+        Sort Method: top-N heapsort  Memory: 28kB
+        Buffers: shared hit=1204
+        ->  Subquery Scan on t  (cost=0.36..8194.00 rows=33313 width=16) (actual time=0.022..23.673 rows=6606.00 loops=1)
+              Filter: ((t.start_date - t.prev_end) > 182)
+              Rows Removed by Filter: 93334
+              Buffers: shared hit=1201
+              ->  WindowAgg  (cost=0.36..6611.62 rows=99940 width=12) (actual time=0.015..21.349 rows=99940.00 loops=1)
+                    Window: w1 AS (PARTITION BY positions.member_id ORDER BY positions.start_date)
+                    Storage: Memory  Maximum Storage: 17kB
+                    Buffers: shared hit=1201
+                    ->  Index Scan using idx_positions_member_start on positions  (cost=0.29..4862.67 rows=99940 width=12) (actual time=0.004..7.193 rows=99940.00 loops=1)
+                          Index Searches: 1
+                          Buffers: shared hit=1201
+Planning:
+  Buffers: shared hit=108
+Planning Time: 0.206 ms
+Execution Time: 24.013 ms
+=== R25 run 5 ===
+Limit  (cost=9467.20..9467.45 rows=100 width=16) (actual time=24.401..24.406 rows=100.00 loops=1)
+  Buffers: shared hit=1204
+  ->  Sort  (cost=9467.20..9550.49 rows=33313 width=16) (actual time=24.401..24.403 rows=100.00 loops=1)
+        Sort Key: ((t.start_date - t.prev_end)) DESC, t.member_id
+        Sort Method: top-N heapsort  Memory: 28kB
+        Buffers: shared hit=1204
+        ->  Subquery Scan on t  (cost=0.36..8194.00 rows=33313 width=16) (actual time=0.019..24.055 rows=6606.00 loops=1)
+              Filter: ((t.start_date - t.prev_end) > 182)
+              Rows Removed by Filter: 93334
+              Buffers: shared hit=1201
+              ->  WindowAgg  (cost=0.36..6611.62 rows=99940 width=12) (actual time=0.011..21.601 rows=99940.00 loops=1)
+                    Window: w1 AS (PARTITION BY positions.member_id ORDER BY positions.start_date)
+                    Storage: Memory  Maximum Storage: 17kB
+                    Buffers: shared hit=1201
+                    ->  Index Scan using idx_positions_member_start on positions  (cost=0.29..4862.67 rows=99940 width=12) (actual time=0.004..6.990 rows=99940.00 loops=1)
+                          Index Searches: 1
+                          Buffers: shared hit=1201
+Planning:
+  Buffers: shared hit=108
+Planning Time: 0.195 ms
+Execution Time: 24.440 ms
