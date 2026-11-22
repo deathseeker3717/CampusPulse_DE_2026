@@ -1,0 +1,105 @@
+=== R04 run 1 ===
+Hash Join  (cost=17.93..35.01 rows=18 width=4) (actual time=0.363..0.364 rows=0.00 loops=1)
+  Hash Cond: (connections.member_b = connections_2.member_b)
+  Buffers: shared hit=12 read=2
+  ->  Append  (cost=0.43..17.27 rows=18 width=4) (actual time=0.222..0.227 rows=42.00 loops=1)
+        Buffers: shared hit=6 read=1
+        ->  Index Only Scan using connections_pkey on connections  (cost=0.43..8.62 rows=11 width=4) (actual time=0.221..0.222 rows=42.00 loops=1)
+              Index Cond: (member_a = 1023)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=3 read=1
+        ->  Index Only Scan using idx_connections_member_b on connections connections_1  (cost=0.43..8.55 rows=7 width=4) (actual time=0.003..0.003 rows=0.00 loops=1)
+              Index Cond: (member_b = 1023)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=3
+  ->  Hash  (cost=17.27..17.27 rows=18 width=4) (actual time=0.131..0.131 rows=47.00 loops=1)
+        Buckets: 1024  Batches: 1  Memory Usage: 10kB
+        Buffers: shared hit=6 read=1
+        ->  Append  (cost=0.43..17.27 rows=18 width=4) (actual time=0.119..0.127 rows=47.00 loops=1)
+              Buffers: shared hit=6 read=1
+              ->  Index Only Scan using connections_pkey on connections connections_2  (cost=0.43..8.62 rows=11 width=4) (actual time=0.118..0.120 rows=47.00 loops=1)
+                    Index Cond: (member_a = 356)
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=3 read=1
+              ->  Index Only Scan using idx_connections_member_b on connections connections_3  (cost=0.43..8.55 rows=7 width=4) (actual time=0.006..0.006 rows=0.00 loops=1)
+                    Index Cond: (member_b = 356)
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=170
+Planning Time: 0.274 ms
+Execution Time: 0.390 ms
+=== R04 run 2 ===
+Hash Join  (cost=17.93..35.01 rows=18 width=4) (actual time=0.054..0.054 rows=0.00 loops=1)
+  Hash Cond: (connections.member_b = connections_2.member_b)
+  Buffers: shared hit=14
+  ->  Append  (cost=0.43..17.27 rows=18 width=4) (actual time=0.026..0.032 rows=42.00 loops=1)
+        Buffers: shared hit=7
+        ->  Index Only Scan using connections_pkey on connections  (cost=0.43..8.62 rows=11 width=4) (actual time=0.026..0.027 rows=42.00 loops=1)
+              Index Cond: (member_a = 1023)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=4
+        ->  Index Only Scan using idx_connections_member_b on connections connections_1  (cost=0.43..8.55 rows=7 width=4) (actual time=0.003..0.003 rows=0.00 loops=1)
+              Index Cond: (member_b = 1023)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=3
+  ->  Hash  (cost=17.27..17.27 rows=18 width=4) (actual time=0.017..0.017 rows=47.00 loops=1)
+        Buckets: 1024  Batches: 1  Memory Usage: 10kB
+        Buffers: shared hit=7
+        ->  Append  (cost=0.43..17.27 rows=18 width=4) (actual time=0.004..0.013 rows=47.00 loops=1)
+              Buffers: shared hit=7
+              ->  Index Only Scan using connections_pkey on connections connections_2  (cost=0.43..8.62 rows=11 width=4) (actual time=0.004..0.005 rows=47.00 loops=1)
+                    Index Cond: (member_a = 356)
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Only Scan using idx_connections_member_b on connections connections_3  (cost=0.43..8.55 rows=7 width=4) (actual time=0.006..0.006 rows=0.00 loops=1)
+                    Index Cond: (member_b = 356)
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=170
+Planning Time: 0.280 ms
+Execution Time: 0.082 ms
+=== R04 run 3 ===
+Hash Join  (cost=17.93..35.01 rows=18 width=4) (actual time=0.065..0.065 rows=0.00 loops=1)
+  Hash Cond: (connections.member_b = connections_2.member_b)
+  Buffers: shared hit=14
+  ->  Append  (cost=0.43..17.27 rows=18 width=4) (actual time=0.032..0.040 rows=42.00 loops=1)
+        Buffers: shared hit=7
+        ->  Index Only Scan using connections_pkey on connections  (cost=0.43..8.62 rows=11 width=4) (actual time=0.032..0.033 rows=42.00 loops=1)
+              Index Cond: (member_a = 1023)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=4
+        ->  Index Only Scan using idx_connections_member_b on connections connections_1  (cost=0.43..8.55 rows=7 width=4) (actual time=0.004..0.004 rows=0.00 loops=1)
+              Index Cond: (member_b = 1023)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=3
+  ->  Hash  (cost=17.27..17.27 rows=18 width=4) (actual time=0.020..0.020 rows=47.00 loops=1)
+        Buckets: 1024  Batches: 1  Memory Usage: 10kB
+        Buffers: shared hit=7
+        ->  Append  (cost=0.43..17.27 rows=18 width=4) (actual time=0.005..0.015 rows=47.00 loops=1)
+              Buffers: shared hit=7
+              ->  Index Only Scan using connections_pkey on connections connections_2  (cost=0.43..8.62 rows=11 width=4) (actual time=0.005..0.006 rows=47.00 loops=1)
+                    Index Cond: (member_a = 356)
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Only Scan using idx_connections_member_b on connections connections_3  (cost=0.43..8.55 rows=7 width=4) (actual time=0.006..0.006 rows=0.00 loops=1)
+                    Index Cond: (member_b = 356)
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=170
+Planning Time: 0.284 ms
+Execution Time: 0.094 ms

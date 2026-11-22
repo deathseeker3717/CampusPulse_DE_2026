@@ -1,0 +1,31 @@
+query_id,type,avg_ms,median_ms,min_ms,max_ms,scan_nodes
+R01,READ,0.278,0.145,0.053,0.636,Index Scan using members_pkey on members | Index Scan using idx_positions_member_start on positions | Index Scan using companies_pkey on companies
+R02,READ,0.130,0.049,0.038,0.302,Index Scan using idx_positions_member_start on positions | Index Scan using companies_pkey on companies
+R03,READ,0.190,0.063,0.051,0.455,Index Scan using connections_pkey on connections | Index Only Scan using idx_connections_member_b on connections
+R04,READ,0.189,0.094,0.082,0.390,Index Only Scan using connections_pkey on connections | Index Only Scan using idx_connections_member_b on connections
+R05,READ,9.638,0.765,0.664,27.485,Bitmap Heap Scan on connections | Bitmap Index Scan on connections_pkey | Bitmap Index Scan on idx_connections_member_b
+R06,READ,45.449,44.293,43.809,48.245,Seq Scan on jobs | Index Scan using companies_pkey on companies
+R07,READ,51.283,45.611,40.135,68.103,Seq Scan on job_skills | Seq Scan on jobs | Index Only Scan using member_skills_pkey on member_skills
+R08,READ,0.132,0.070,0.067,0.260,Index Scan using idx_applications_job_date on applications
+R09,READ,0.241,0.068,0.068,0.587,Index Only Scan using idx_applications_member_applied_at on applications | Index Scan using jobs_pkey on jobs | Index Scan using companies_pkey on companies
+R10,READ,0.112,0.065,0.064,0.206,Index Only Scan using idx_invitations_recipient_status on invitations | Index Scan using members_pkey on members
+R11,READ,0.203,0.087,0.086,0.437,Index Only Scan using idx_profile_views_viewed_date on profile_views
+R12,READ,47.954,39.182,34.862,69.817,Seq Scan on positions | Seq Scan on companies
+R13,READ,249.203,245.655,239.058,262.897,Index Scan using members_pkey on members | Index Only Scan using idx_profile_views_viewer on profile_views
+R14,READ,99.651,90.798,90.703,117.451,Seq Scan on jobs | Seq Scan on applications | Seq Scan on companies
+R15,READ,64.991,65.549,61.909,67.515,Seq Scan on job_skills | Seq Scan on jobs | Seq Scan on skills
+R16,READ,12.973,13.107,12.695,13.117,Seq Scan on jobs | Seq Scan on cities
+R17,READ,578.797,578.425,571.702,586.265,Index Scan using idx_positions_member_start on positions | Seq Scan on companies | Index Scan using companies_pkey on companies
+R18,READ,24.824,22.850,22.031,29.590,Seq Scan on members | Seq Scan on skills | Index Only Scan using idx_member_skills_skill_endorsements on member_skills
+R19,READ,59.655,57.996,57.593,63.375,Seq Scan on jobs | Index Only Scan using idx_applications_applied_at on applications | Seq Scan on companies
+R20,READ,22.731,22.519,22.468,23.206,Index Only Scan using idx_applications_applied_at on applications
+R21,READ,431.889,426.612,425.013,444.041,Index Only Scan using idx_member_skills_skill_endorsements on member_skills | Index Scan using skills_pkey on skills
+R22,READ,6.279,5.904,5.790,7.143,Index Only Scan using idx_applications_applied_at on applications
+R23,READ,0.138,0.026,0.025,0.364,Index Scan using idx_members_lower_email on members
+R24,READ,119.313,86.846,86.133,184.960,Seq Scan on members | Seq Scan on invitations
+R25,READ,543.219,541.920,536.581,551.156,Index Scan using idx_positions_member_start on positions
+W01,WRITE,1.164,0.581,0.555,2.357,(no scan)
+W02,WRITE,0.700,0.200,0.176,1.723,Index Only Scan using idx_invitations_recipient_status on invitations | Index Scan using invitations_pkey on invitations
+W03,WRITE,0.748,0.454,0.434,1.356,Index Only Scan using idx_invitations_recipient_status on invitations | Index Scan using invitations_pkey on invitations
+W04,WRITE,171.227,63.140,51.897,398.644,Seq Scan on jobs
+W05,WRITE,139.243,32.176,31.711,353.843,Seq Scan on jobs | Seq Scan on companies | Index Scan using idx_applications_job_date on applications

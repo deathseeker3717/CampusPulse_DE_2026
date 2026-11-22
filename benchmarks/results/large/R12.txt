@@ -1,0 +1,81 @@
+=== R12 run 1 ===
+Finalize GroupAggregate  (cost=2052.01..29577.85 rows=1 width=61) (actual time=38.284..39.143 rows=1.00 loops=1)
+  Buffers: shared hit=1500 read=18604
+  ->  Gather  (cost=2052.01..29577.82 rows=2 width=61) (actual time=38.209..39.135 rows=3.00 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=1500 read=18604
+        ->  Partial GroupAggregate  (cost=1052.01..28577.62 rows=1 width=61) (actual time=36.604..36.605 rows=1.00 loops=3)
+              Buffers: shared hit=1500 read=18604
+              ->  Hash Join  (cost=1052.01..28577.52 rows=7 width=25) (actual time=2.953..36.547 rows=227.67 loops=3)
+                    Hash Cond: (p.company_id = c.company_id)
+                    Buffers: shared hit=1500 read=18604
+                    ->  Parallel Seq Scan on positions p  (cost=0.00..26776.30 rows=285383 width=8) (actual time=0.099..28.159 rows=228227.00 loops=3)
+                          Filter: (end_date IS NULL)
+                          Rows Removed by Filter: 438037
+                          Buffers: shared hit=1 read=18447
+                    ->  Hash  (cost=1052.00..1052.00 rows=1 width=25) (actual time=2.571..2.572 rows=1.00 loops=3)
+                          Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                          Buffers: shared hit=1499 read=157
+                          ->  Seq Scan on companies c  (cost=0.00..1052.00 rows=1 width=25) (actual time=0.035..2.562 rows=1.00 loops=3)
+                                Filter: (company_name = 'Flipkart'::text)
+                                Rows Removed by Filter: 39999
+                                Buffers: shared hit=1499 read=157
+Planning:
+  Buffers: shared hit=241 read=3
+Planning Time: 0.570 ms
+Execution Time: 39.182 ms
+=== R12 run 2 ===
+Finalize GroupAggregate  (cost=2052.01..29577.85 rows=1 width=61) (actual time=68.517..69.769 rows=1.00 loops=1)
+  Buffers: shared hit=1939 read=18165
+  ->  Gather  (cost=2052.01..29577.82 rows=2 width=61) (actual time=68.361..69.753 rows=3.00 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=1939 read=18165
+        ->  Partial GroupAggregate  (cost=1052.01..28577.62 rows=1 width=61) (actual time=66.539..66.540 rows=1.00 loops=3)
+              Buffers: shared hit=1939 read=18165
+              ->  Hash Join  (cost=1052.01..28577.52 rows=7 width=25) (actual time=1.716..62.694 rows=227.67 loops=3)
+                    Hash Cond: (p.company_id = c.company_id)
+                    Buffers: shared hit=1939 read=18165
+                    ->  Parallel Seq Scan on positions p  (cost=0.00..26776.30 rows=285383 width=8) (actual time=0.051..52.996 rows=228227.00 loops=3)
+                          Filter: (end_date IS NULL)
+                          Rows Removed by Filter: 438037
+                          Buffers: shared hit=283 read=18165
+                    ->  Hash  (cost=1052.00..1052.00 rows=1 width=25) (actual time=1.433..1.433 rows=1.00 loops=3)
+                          Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                          Buffers: shared hit=1656
+                          ->  Seq Scan on companies c  (cost=0.00..1052.00 rows=1 width=25) (actual time=0.017..1.431 rows=1.00 loops=3)
+                                Filter: (company_name = 'Flipkart'::text)
+                                Rows Removed by Filter: 39999
+                                Buffers: shared hit=1656
+Planning:
+  Buffers: shared hit=244
+Planning Time: 0.360 ms
+Execution Time: 69.817 ms
+=== R12 run 3 ===
+Finalize GroupAggregate  (cost=2052.01..29577.85 rows=1 width=61) (actual time=34.064..34.829 rows=1.00 loops=1)
+  Buffers: shared hit=2221 read=17883
+  ->  Gather  (cost=2052.01..29577.82 rows=2 width=61) (actual time=34.056..34.822 rows=3.00 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=2221 read=17883
+        ->  Partial GroupAggregate  (cost=1052.01..28577.62 rows=1 width=61) (actual time=32.613..32.613 rows=1.00 loops=3)
+              Buffers: shared hit=2221 read=17883
+              ->  Hash Join  (cost=1052.01..28577.52 rows=7 width=25) (actual time=1.502..32.565 rows=227.67 loops=3)
+                    Hash Cond: (p.company_id = c.company_id)
+                    Buffers: shared hit=2221 read=17883
+                    ->  Parallel Seq Scan on positions p  (cost=0.00..26776.30 rows=285383 width=8) (actual time=0.040..25.721 rows=228227.00 loops=3)
+                          Filter: (end_date IS NULL)
+                          Rows Removed by Filter: 438037
+                          Buffers: shared hit=565 read=17883
+                    ->  Hash  (cost=1052.00..1052.00 rows=1 width=25) (actual time=1.277..1.277 rows=1.00 loops=3)
+                          Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                          Buffers: shared hit=1656
+                          ->  Seq Scan on companies c  (cost=0.00..1052.00 rows=1 width=25) (actual time=0.015..1.275 rows=1.00 loops=3)
+                                Filter: (company_name = 'Flipkart'::text)
+                                Rows Removed by Filter: 39999
+                                Buffers: shared hit=1656
+Planning:
+  Buffers: shared hit=244
+Planning Time: 0.339 ms
+Execution Time: 34.862 ms

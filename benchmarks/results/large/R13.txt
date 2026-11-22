@@ -1,0 +1,45 @@
+=== R13 run 1 ===
+Merge Anti Join  (cost=11.72..120237.30 rows=272236 width=15) (actual time=4.155..260.499 rows=130313.00 loops=1)
+  Merge Cond: (m.member_id = v.viewer_id)
+  Buffers: shared hit=4704 read=14755
+  ->  Index Scan using members_pkey on members m  (cost=0.42..33411.63 rows=800000 width=15) (actual time=0.015..83.992 rows=800000.00 loops=1)
+        Index Searches: 1
+        Buffers: shared hit=184 read=14755
+  ->  Index Only Scan using idx_profile_views_viewer on profile_views v  (cost=0.43..63148.36 rows=3999994 width=4) (actual time=0.024..83.704 rows=2999127.00 loops=1)
+        Heap Fetches: 0
+        Index Searches: 1
+        Buffers: shared hit=4520
+Planning:
+  Buffers: shared hit=264
+Planning Time: 0.431 ms
+Execution Time: 262.897 ms
+=== R13 run 2 ===
+Merge Anti Join  (cost=11.72..120237.30 rows=272236 width=15) (actual time=3.941..243.365 rows=130313.00 loops=1)
+  Merge Cond: (m.member_id = v.viewer_id)
+  Buffers: shared hit=3909 read=15550 written=1
+  ->  Index Scan using members_pkey on members m  (cost=0.42..33411.63 rows=800000 width=15) (actual time=0.015..66.022 rows=800000.00 loops=1)
+        Index Searches: 1
+        Buffers: shared hit=289 read=14650 written=1
+  ->  Index Only Scan using idx_profile_views_viewer on profile_views v  (cost=0.43..63148.36 rows=3999994 width=4) (actual time=0.023..85.523 rows=2999127.00 loops=1)
+        Heap Fetches: 0
+        Index Searches: 1
+        Buffers: shared hit=3620 read=900
+Planning:
+  Buffers: shared hit=264
+Planning Time: 0.434 ms
+Execution Time: 245.655 ms
+=== R13 run 3 ===
+Merge Anti Join  (cost=11.72..120237.30 rows=272236 width=15) (actual time=4.179..236.729 rows=130313.00 loops=1)
+  Merge Cond: (m.member_id = v.viewer_id)
+  Buffers: shared hit=321 read=19138
+  ->  Index Scan using members_pkey on members m  (cost=0.42..33411.63 rows=800000 width=15) (actual time=0.015..60.574 rows=800000.00 loops=1)
+        Index Searches: 1
+        Buffers: shared hit=318 read=14621
+  ->  Index Only Scan using idx_profile_views_viewer on profile_views v  (cost=0.43..63148.36 rows=3999994 width=4) (actual time=0.454..86.985 rows=2999127.00 loops=1)
+        Heap Fetches: 0
+        Index Searches: 1
+        Buffers: shared hit=3 read=4517
+Planning:
+  Buffers: shared hit=264
+Planning Time: 0.413 ms
+Execution Time: 239.058 ms
