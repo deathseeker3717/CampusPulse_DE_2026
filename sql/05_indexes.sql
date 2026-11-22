@@ -40,3 +40,9 @@ ON member_skills (skill_id, endorsements DESC, member_id);
 -- R23: case-insensitive email lookup
 CREATE INDEX idx_members_lower_email
 ON members (lower(email));
+
+-- R09: Speed up member application history lookups.
+CREATE INDEX IF NOT EXISTS idx_applications_member_applied_at
+ON linkedin.applications (member_id, applied_at DESC)
+INCLUDE (application_id, job_id, status);
+
